@@ -1,0 +1,48 @@
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import LSTM, Dense
+
+# Load the stock data
+df = pd.read_csv("Yahoo_stock_data.csv")
+
+# Scale the data
+scaler = MinMaxScaler(feature_range=(0, 1))
+df = scaler.fit_transform(df)
+
+# Split the data into training and testing sets
+train_size = int(len(df) * 0.8)
+test_size = len(df) - train_size
+train, test = df[0:train_size,:], df[train_size:len(df),:]
+
+# Convert the data into a 3D array (a x b x c) 
+def create_dataset(dataset, look_back=1):
+    dataX, dataY = [], []
+    for i in range(len(dataset)-look_back-1):
+        a = dataset[i:(i+look_back), 0]
+        dataX.append(a)
+        dataY.append(dataset[i + look_back, 0])
+    return np.array(dataX), np.array(dataY)
+
+# Use the function to create dataset
+look_back = 1
+X_train, y_train = create_dataset(train, look_back)
+X_test, y_test = create_dataset(test, look_back)
+
+# Reshape the data for the LSTM model
+X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
+X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
+
+# Build the LSTM model
+model = Sequential()
+model.add(LSTM(4, input_shape=(1, look_back)))
+model.add(Dense(1))
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+# Train the model
+model.fit(X_train, y_train, epochs=100, batch_size=1, verbose=2)
+
+# Make predictions
+trainPredict = model.predict(X_train)
+testPredict = model.predict(X_test)
