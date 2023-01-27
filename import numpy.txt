@@ -1,8 +1,95 @@
+numpy
+
+pandas
+
+scikit-learn
+
+keras
+import pandas as pd
+
+from sklearn.linear_model import LinearRegression
+
+from sklearn.model_selection import train_test_split
+
+# Load the data
+
+df = pd.read_csv("https://query1.finance.yahoo.com/v7/finance/download/YHOO?period1=1577836800&period2=1609459199&interval=1d&events=history")
+
+# Split the data into training and testing sets
+
+X = df[['Open', 'High', 'Low', 'Close', 'Volume']]
+
+y = df['Close']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+# Create and train the model
+
+regressor = LinearRegression()
+
+regressor.fit(X_train, y_train)
+
+# Make predictions on the testing data
+
+y_pred = regressor.predict(X_test)
+
+# Evaluate the model
+
+score = regressor.score(X_test, y_test)
+
+print("R-squared value:", score)
+
+
+tensorflow
+import alpaca_trade_api as tradeapi
+
+# Replace with your API key
+
+api = tradeapi.REST('APCA-API-KEY-ID', 'APCA-API-SECRET-KEY', base_url='https://paper-api.alpaca.markets')
+
+# Retrieve the historical data for a stock
+
+stock = 'AAPL'
+
+barset = api.get_barset(stock, 'day', limit=30)
+
+aapl_bars = barset[stock]
+
+# Print out the data
+
+for bar in aapl_bars:
+
+    print("Date:", bar.t, "Open:", bar.o, "High:", bar.h, "Low:", bar.l, "Close:", bar.c, "Volume:", bar.v)
+
+
+
+
+pip freeze > requirements.txt
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
+import alpaca_trade_api as tradeapi
+
+# Replace with your API key
+
+api = tradeapi.REST('APCA-API-KEY-ID', 'APCA-API-SECRET-KEY', base_url='https://paper-api.alpaca.markets')
+
+# Retrieve the historical data for a stock
+
+stock = 'AAPL'
+
+barset = api.get_barset(stock, 'day', limit=30)
+
+aapl_bars = barset[stock]
+
+# Print out the data
+
+for bar in aapl_bars:
+
+    print("Date:", bar.t, "Open:", bar.o, "High:", bar.h, "Low:", bar.l, "Close:", bar.c, "Volume:", bar.v)
+
 
 # Load the stock data
 df = pd.read_csv("Yahoo_stock_data.csv")
@@ -46,3 +133,25 @@ model.fit(X_train, y_train, epochs=100, batch_size=1, verbose=2)
 # Make predictions
 trainPredict = model.predict(X_train)
 testPredict = model.predict(X_test)
+from stable_baselines.common.policies import MlpPolicy
+
+from stable_baselines.common.vec_env import DummyVecEnv
+
+from stable_baselines import PPO2
+
+# create the environment
+
+env = gym.make('CartPole-v1')
+
+# create a wrapper to convert the environment to a vectorized environment
+
+vec_env = DummyVecEnv([lambda: env])
+
+# define the model
+
+model = PPO2(MlpPolicy, vec_env, verbose=1)
+
+# train the model
+
+model.learn(total_timesteps=10000)
+
