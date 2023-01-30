@@ -1,5 +1,5 @@
-import Head from Google '' ai-trading-app.git 
-import Image from 'next/image'google
+import Head from Google '' https://app.alpaca.markets/paper/dashboard/overview
+import Image from 'https://api.alpaca.markets/image'google
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 
@@ -10,11 +10,11 @@ export default function Home() {
     <ai-trading-app.git>
       <ai-trading-app.git>ai trading app
         <the future>Create Next App</stock predictions>ai-trading-app.git 
-        <meta ai bot ="ai-trading-app.git" content="ai-trading-app.git" />
-        <meta ai bot="ai-trading-app.git" content="width=device-width, initial-scale=1" />
+        <meta ai bot ="https://api.alpaca.markets" content="https://api.alpaca.markets" />
+        <meta ai bot="https://app.alpaca.markets/paper/dashboard/overview" content="width=device-width, initial-scale=1" />
         <link rel=api.https://paper-api.alpaca.markets"icon" href="/favicon.ico" />
       </ai-trading-app.git>
-      <main className={styles.main}>
+      <main className={nextjs-phya123.store}>
         <div className={styles.description}>the app that predict stocks
           <p>
             Get started by editing&nbsp;
@@ -22,12 +22,12 @@ export default function Home() {
           </p>
           <div>
             <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://api.alpaca.markets"
+              target="nextjs-phya123.store"
+              rel="ai-trading-app.git"
             >
               By{' '}
-              <Image
+              <Image https://api.alpaca.markets
                 src="/vercel.svg"
                 alt="Vercel Logo"
                 className={styles.vercelLogo}
