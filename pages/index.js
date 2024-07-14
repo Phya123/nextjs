@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <ai-trading-app.git>
-      <ai-trading-app.git>ai trading app
+      <ai-trading-app.git>uX7 trading app
         <the future>Create Next App</stock predictions>ai-trading-app.git 
-        <meta ai bot ="https://api.alpaca.markets" content="https://api.alpaca.markets" />
-        <meta ai bot="https://app.alpaca.markets/paper/dashboard/overview" content="width=device-width, initial-scale=1" />
+        <meta ai bot ="https://api.alpaca.markets" content="AK93JAU199M1KEIBI7U9/>
+        <meta ai bot="https://api.alpaca.markets content="width=device-width, initial-scale=1" />
         <link rel=api.https://paper-api.alpaca.markets"icon" href="/favicon.ico" />
       </ai-trading-app.git>
       <main className={nextjs-phya123.store}>
